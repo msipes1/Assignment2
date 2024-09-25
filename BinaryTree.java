@@ -221,6 +221,7 @@ public class BinaryTree {
      */
 
     private void replaceValueHelper(Node node, int oldVal, int newVal) {
+        //Empty Tree
         if (node == null) {
             return;
         }
@@ -228,7 +229,7 @@ public class BinaryTree {
         if (node.data == oldVal) {
             node.data = newVal;
         }
-        //recursion
+        //Recursion
         replaceValueHelper(node.left, oldVal, newVal);
         replaceValueHelper(node.right, oldVal, newVal);
     }
@@ -249,6 +250,7 @@ public class BinaryTree {
      */
 
     private int findMinHelper(Node node) {
+        //Empty Tree
         if (node == null) {
             return Integer.MAX_VALUE;
         }
@@ -274,9 +276,11 @@ public class BinaryTree {
      */
 
     private int nodesGTHelper(Node node, int val) {
+        //Empty tree
         if (node == null) {
             return 0;
         }
+        //Recursion
         int countL = nodesGTHelper(node.left, val) ;
         int countR = nodesGTHelper(node.right, val);
 
@@ -316,21 +320,16 @@ public class BinaryTree {
     }
 
     private int[] averageHelper(Node n) {
+        //Empty tree
         if (n == null) {
             return new int[]{0, 0};
         }
+        //Recursion
         int [] resultR = averageHelper(n.right);
         int [] resultL = averageHelper(n.left);
         int sum = n.data + resultR[0] + resultL[0];
         int count = 1 + resultR[1] + resultL[1];
 
         return new int [] {sum, count};
-
-        // ADD YOUR CODE HERE -- USE DEPTH FIRST SEARCH OF
-        // BINARY TREE (WHICH IS BASED ON RECURSION)
-
-        // RECALL, IF THE TREE IS EMPTY, RETURN 0 FOR BOTH THE SUM AND
-        // COUNT LOCATIONS IN THE RETURNED ARRAY AS SHOWN BELOW, ELSE
-        // THE 'SUM' IS RETURNED IN INDEX LOCATION 0, AND COUNT IS LOCATION 1
     }
 }
